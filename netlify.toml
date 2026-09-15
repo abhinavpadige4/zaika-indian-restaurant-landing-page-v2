@@ -1,0 +1,26 @@
+[build]
+  # No build command needed for static site
+  command = "echo 'No build step required'"
+  publish = "/"
+
+[redirects]
+  # Redirect all routes to index.html for client-side routing (if needed)
+  /*    /index.html   200
+
+[headers]
+  # Security headers
+  /*
+    X-Frame-Options: DENY
+    X-XSS-Protection: 1; mode=block
+    X-Content-Type-Options: nosniff
+    Referrer-Policy: strict-origin-when-cross-origin
+
+  # Cache assets for 1 year
+  /css/*
+    Cache-Control: public, max-age=31536000, immutable
+
+  /js/*
+    Cache-Control: public, max-age=31536000, immutable
+
+  /assets/images/*
+    Cache-Control: public, max-age=31536000, immutable
